@@ -21,7 +21,6 @@ import Shop from './views/Shop'
 import NFTs from './views/NFTs'
 import VestNFT from './views/VestNFT'
 import MyNFT from './views/MyNFT'
-import Referral from './views/Referral'
 import SharePool from './views/SharePool'
 
 const App: React.FC = () => {

@@ -26,43 +26,13 @@ export const SharePools: Array<SharePoolObj> = [
     {
         poolAddresses: {
             1: '0xc4d47d35f109dae8e33d5daa334a6b9f512ea2a1',
-            56: '0x963FfA229E0197a3cA070Da8b0C9316142B635d2',
-            97: '0x68741369e9d45227a03bD420D1429A0684809837',
-            // Ref 0x63c96a4ef286a807ee2ae3131331669efed9e6a1
         },
         stakingTokenAddresses: [
             {
-                56: '0x368F9Fb3b2205B6dD5A629D0449E249115ca84C8',
-                name: 'USDT/USDC LP',
-                symbol: 'USDT/USDC LP',
-                tokenSymbol: 'USDT/USDC LP',
-                isWBNB: false,
-                isLpToken: true,
-                icon: 'y3d',
-            },
-            {
-                56: '0xc7353bDAa987849541657A113984822b5727FAC5',
-                name: 'DAI/USDC LP',
-                symbol: 'DAI/USDC LP',
-                tokenSymbol: 'DAI/USDC LP',
-                isWBNB: false,
-                isLpToken: true,
-                icon: 'y3d',
-            },
-            {
-                56: '0xe2aB6c934b1854C5e4C3BaC60cdc5852516e0075',
-                name: 'DAI/USDT LP',
-                symbol: 'DAI/USDT LP',
-                tokenSymbol: 'DAI/USDT LP',
-                isWBNB: false,
-                isLpToken: true,
-                icon: 'y3d',
-            },
-            {
-                56: '0x96a5335a3cf10e6429ee01b2701c6536587012e0',
-                name: 'USDT/BUSD LP',
-                symbol: 'USDT/BUSD LP',
-                tokenSymbol: 'USDT/BUSD LP',
+                1: '0x974af8c3d9e37673993265a244ca5ea86547a680',
+                name: 'USDC/DAI LP',
+                symbol: 'USDC/DAI LP',
+                tokenSymbol: 'USDC/DAI LP',
                 isWBNB: false,
                 isLpToken: true,
                 icon: 'y3d',
@@ -71,6 +41,6 @@ export const SharePools: Array<SharePoolObj> = [
         icon: 'y3d',
         name: 'StableLP Pool',
         p3d: 0,
-        magnification: 2,
+        magnification: 1,
     }
 ]
