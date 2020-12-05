@@ -73,13 +73,12 @@ const App: React.FC = () => {
 }
 
 const Providers: React.FC = ({ children }) => {
-  const chainId = Number(process.env.REACT_APP_CHAIN_ID) || 56
   return (
     <ThemeProvider theme={theme}>
       <UseWalletProvider
-        chainId={chainId}
+        chainId={1}
         connectors={{
-          walletconnect: { rpcUrl: 'https://bsc-dataseed.binance.org/' },
+          walletconnect: { rpcUrl: 'https://mainnet.eth.aragon.network/' },
         }}
       >
           <TransactionProvider>

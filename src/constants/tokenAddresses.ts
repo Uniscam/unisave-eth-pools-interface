@@ -16,6 +16,7 @@ export const WBNB_ADDRESS: Addresses = {
     56: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c'
 }
 export const Y3D_ADDRESS: Addresses = {
+    1: '0xc7fd9ae2cf8542d71186877e21107e1f3a0b55ef',
     56: '0x12e2fcfa079fc23ae82ab82707b402410321103f',
     97: '0xcfe6b7715b4164583ac63d8f21b5c71357a1e8ec'
 }

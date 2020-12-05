@@ -18,13 +18,17 @@ export function useY3dPrice() {
   }, [ethereum])
 
   const fetchPrice = useCallback(async () => {
-    const [, outputBUSD] = await contract.methods
-      .getAmountsOut(utils.parseUnits('1', 18), [
-        Y3D_ADDRESS[chainId], // Y3D
-        BUSD_ADDRESS[chainId], // BUSD
-      ])
-      .call()
-    updatePriceInBUSD(outputBUSD)
+    let output = new BigNumber(0)
+    if (chainId === 56) {
+      const [, outputBUSD] = await contract.methods
+        .getAmountsOut(utils.parseUnits('1', 18), [
+          Y3D_ADDRESS[chainId], // Y3D
+          BUSD_ADDRESS[chainId], // BUSD
+        ])
+        .call()
+      output = outputBUSD
+    }
+    updatePriceInBUSD(output)
   }, [chainId, contract.methods])
 
   useEffect(() => {
