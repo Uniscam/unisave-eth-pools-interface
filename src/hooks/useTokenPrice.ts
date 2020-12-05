@@ -6,7 +6,7 @@ import { getSwapRouter } from '../utils/swapRouter'
 import {
   ADDRESS_ZERO,
   WBNB_ADDRESS,
-  BUSD_ADDRESS,
+  STABLECOIN_ADDRESS,
   ROUTER02_ADDRESS,
 } from '../constants/tokenAddresses'
 import { getTotalLiquidity } from '../utils/Liquidity'
@@ -77,7 +77,7 @@ export function useTokenPriceInBUSD(
   const [priceInBUSD, updatePriceInBUSD] = useState('0')
   // 97 stands for bsc testnet
   const networkId = chainId
-  const busdAddr = BUSD_ADDRESS[networkId]
+  const busdAddr = STABLECOIN_ADDRESS[networkId]
   const contract = useMemo(() => {
     return getSwapRouter(ethereum as provider, ROUTER02_ADDRESS[networkId])
   }, [ethereum, networkId])

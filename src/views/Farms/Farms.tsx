@@ -13,12 +13,13 @@ import { useY3dPrice } from '../../hooks/useY3dPrice'
 
 import Farm from '../Farm'
 import FarmCards from './components/FarmCards'
+import { STABLECOIN_DECIMALS } from '../../constants/tokenAddresses';
 
 const Farms: React.FC = () => {
   const { path } = useRouteMatch()
   const y3dPrice = useY3dPrice()
-  const readablePriceInUSDT = utils.formatUnits(y3dPrice.priceInUSD, 18).slice(0, 9)
-  const { account } = useWallet()
+  const { account, chainId } = useWallet()
+  const readablePriceInUSDT = utils.formatUnits(y3dPrice.priceInUSD, STABLECOIN_DECIMALS[chainId] || 18).slice(0, 9)
   const [onPresentWalletProviderModal] = useModal(<WalletProviderModal />)
   return (
     <Switch>
