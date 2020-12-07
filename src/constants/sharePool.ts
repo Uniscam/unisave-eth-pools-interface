@@ -23,24 +23,24 @@ export interface SharePoolObj {
 }
 
 export const SharePools: Array<SharePoolObj> = [
-    // {
-    //     poolAddresses: {
-    //         1: '0xc4d47d35f109dae8e33d5daa334a6b9f512ea2a1',
-    //     },
-    //     stakingTokenAddresses: [
-    //         {
-    //             1: '0x974af8c3d9e37673993265a244ca5ea86547a680',
-    //             name: 'USDC/DAI LP',
-    //             symbol: 'USDC/DAI LP',
-    //             tokenSymbol: 'USDC/DAI LP',
-    //             isWBNB: false,
-    //             isLpToken: true,
-    //             icon: 'y3d',
-    //         }
-    //     ],
-    //     icon: 'y3d',
-    //     name: 'StableLP Pool',
-    //     p3d: 0,
-    //     magnification: 1,
-    // }
+    {
+        poolAddresses: {
+            1: '0x443aca7e5c087ef9ad000e7f693a63087d0247ae',
+        },
+        stakingTokenAddresses: [
+            {
+                1: '0x974af8c3d9e37673993265a244ca5ea86547a680',
+                name: 'USDC/DAI LP',
+                symbol: 'USDC/DAI LP',
+                tokenSymbol: 'USDC/DAI LP',
+                isWBNB: false,
+                isLpToken: true,
+                icon: 'y3d',
+            }
+        ],
+        icon: 'y3d',
+        name: 'StableLP Pool',
+        p3d: 0,
+        magnification: 1,
+    }
 ]
