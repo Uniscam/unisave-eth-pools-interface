@@ -13,7 +13,7 @@ import { usePoolApy } from '../../../hooks/useFarmApy'
 import { isNaN } from 'lodash'
 import { useY3dPrice } from '../../../hooks/useY3dPrice'
 import { SharePool } from '../../../contexts/SharePools'
-import { getBalanceNumber } from '../../../utils/formatBalance'
+import BigNumber from 'bignumber.js'
 
 export interface SharePoolCardProps {
   sharePool: SharePool
@@ -38,6 +38,7 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
   const [imagePath, setImagePath] = useState('')
 
   const totalSupply = useTotalSupply(pid)
+  const stakedValue = totalSupply.times(2).div(new BigNumber(10).pow(6)).toString()
 
   const renderer = (countdownProps: CountdownRenderProps) => {
     const { hours, minutes, seconds } = countdownProps
@@ -119,7 +120,7 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
               <StyledDetail>
                 <StyledDetailSpan>Total Staked</StyledDetailSpan>
                 <StyledDetailSpan>
-                  {getBalanceNumber(totalSupply).toFixed(4)} {symbol.toUpperCase()}
+                  $ {stakedValue}
                 </StyledDetailSpan>
               </StyledDetail>
             </StyledDetails>
