@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Countdown, { CountdownRenderProps } from 'react-countdown'
 import styled from 'styled-components'
 // import { useWallet } from 'use-wallet'
@@ -29,10 +29,10 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
   // console.log(earnTokenAddress)
   // const decimalsOfEarn = useDecimals(earnTokenAddress)
   const { priceInBUSD: tokenPriceOfStaking } = useTokenPriceInBUSD(stakingTokenAddress, decimalsOfStaking, isLpToken)
-  
+
   const { priceInUSD: tokenPriceOfEarn } = useY3dPrice()
 
-  const { apy } = usePoolApy(poolAddress, tokenPriceOfEarn.toString(), tokenPriceOfStaking, "18", decimalsOfStaking)
+  const { rewardRate } = usePoolApy(poolAddress, tokenPriceOfEarn.toString(), tokenPriceOfStaking, "18", decimalsOfStaking)
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [startTime, setStartTime] = useState(0)
@@ -40,6 +40,11 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
 
   const totalSupply = useTotalSupply(pid)
   const stakedValue = totalSupply.times(2).div(new BigNumber(10).pow(18+6)).toString()
+  const rewardValue = useMemo(() => {
+    const rewardValueYearly = new BigNumber(rewardRate).div(new BigNumber(10).pow(18)).times(tokenPriceOfEarn.toString()).times(365 * 24 * 3600)
+
+    return rewardValueYearly.div(stakedValue).times(100)
+  }, [rewardRate])
 
   const renderer = (countdownProps: CountdownRenderProps) => {
     const { hours, minutes, seconds } = countdownProps
@@ -93,7 +98,7 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
               <StyledDetail>
                 <StyledDetailSpan>APY</StyledDetailSpan>
                 <StyledDetailSpan>
-                  {((typeof apy === 'string' && apy === 'NaN') || isNaN(apy)) ? 0 : apy}%
+                  {(rewardValue.isNaN() ? '---' : rewardValue.toFixed(6))}%
                 </StyledDetailSpan>
               </StyledDetail>
               <StyledDetail>

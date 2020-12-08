@@ -32,36 +32,38 @@ export function usePoolApy(poolAddress: string, everyRewardTokenInMiddleToken: s
     //     const yearlyRewardInBNB = Number(rewardRate) * 365 * 24 * 3600
     //     // 年利润 / 总抵押额。均以BNB为计价单位
     //     const _apy = (yearlyRewardInBNB / Number(totalStaked))
-    //     apyForDisplay = (_apy * 100).toFixed(2) 
+    //     apyForDisplay = (_apy * 100).toFixed(2)
     // }
 
-    const memoizedApy = useMemo(() => {
-        if (Number(rewardTokenDecimal) === 0 || Number(stakingTokenDecimal) === 0) {
-            return '---.--'
-        }
-        // BNB is 18 long
-        const formattedRewardTokenInBNB = formatUnits(everyRewardTokenInMiddleToken, 18)
-        const formattedStakingTokenInBNB = formatUnits(everyStakingTokenInMiddleToken, 18)
+    // const memoizedApy = useMemo(() => {
+    //     if (Number(rewardTokenDecimal) === 0 || Number(stakingTokenDecimal) === 0) {
+    //         return '---.--'
+    //     }
+    //     // BNB is 18 long
+    //     const formattedRewardTokenInBNB = formatUnits(everyRewardTokenInMiddleToken, 18)
+    //     const formattedStakingTokenInBNB = formatUnits(everyStakingTokenInMiddleToken, 18)
 
-        const formattedRewardRate = formatUnits(rewardRate, rewardTokenDecimal)
-        const formattedtotalStaked = formatUnits(totalStaked, stakingTokenDecimal)
+    //     const formattedRewardRate = formatUnits(rewardRate, rewardTokenDecimal)
+    //     const formattedtotalStaked = formatUnits(totalStaked, stakingTokenDecimal)
 
-        // 365天，24小时，每个小时3600秒
-        const yearlyRewardInBNB = Number(formattedRewardRate) * 365 * 24 * 3600 * Number(formattedRewardTokenInBNB)
-        const totalStakedTokenInBNB = Number(formattedtotalStaked) * Number(formattedStakingTokenInBNB)
-        const apy = (yearlyRewardInBNB / totalStakedTokenInBNB)
-        const apyForDisplay = (apy * 100).toFixed(6)
-        return apy === Number.POSITIVE_INFINITY ?
-            '---.--' : apyForDisplay
-    }, [
-        everyRewardTokenInMiddleToken, everyStakingTokenInMiddleToken,
-        rewardTokenDecimal, stakingTokenDecimal,
-        rewardRate, totalStaked]);
+    //     // 365天，24小时，每个小时3600秒
+    //     const yearlyRewardInBNB = Number(formattedRewardRate) * 365 * 24 * 3600 * Number(formattedRewardTokenInBNB)
+    //     const totalStakedTokenInBNB = Number(formattedtotalStaked) * Number(formattedStakingTokenInBNB)
+    //     const apy = (yearlyRewardInBNB / totalStakedTokenInBNB)
+    //     const apyForDisplay = (apy * 100).toFixed(6)
+    //     return apy === Number.POSITIVE_INFINITY ?
+    //         '---.--' : apyForDisplay
+    // }, [
+    //     everyRewardTokenInMiddleToken, everyStakingTokenInMiddleToken,
+    //     rewardTokenDecimal, stakingTokenDecimal,
+    //     rewardRate, totalStaked]);
+    const [apy] = useState("0")
+
     useEffect(() => {
         if (account && contract) {
             update()
         }
     }, [contract, account, update])
 
-    return { update, apy: memoizedApy, totalStake: totalStaked, rewardRate: rewardRate }
+    return { update, apy, totalStake: totalStaked, rewardRate: rewardRate }
 }
