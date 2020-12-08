@@ -29,6 +29,7 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
   // console.log(earnTokenAddress)
   // const decimalsOfEarn = useDecimals(earnTokenAddress)
   const { priceInBUSD: tokenPriceOfStaking } = useTokenPriceInBUSD(stakingTokenAddress, decimalsOfStaking, isLpToken)
+  
   const { priceInUSD: tokenPriceOfEarn } = useY3dPrice()
 
   const { apy } = usePoolApy(poolAddress, tokenPriceOfEarn.toString(), tokenPriceOfStaking, "18", decimalsOfStaking)
@@ -38,7 +39,7 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
   const [imagePath, setImagePath] = useState('')
 
   const totalSupply = useTotalSupply(pid)
-  const stakedValue = totalSupply.times(2).div(new BigNumber(10).pow(6)).toString()
+  const stakedValue = totalSupply.times(2).div(new BigNumber(10).pow(18+6)).toString()
 
   const renderer = (countdownProps: CountdownRenderProps) => {
     const { hours, minutes, seconds } = countdownProps
@@ -120,7 +121,7 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
               <StyledDetail>
                 <StyledDetailSpan>Total Staked</StyledDetailSpan>
                 <StyledDetailSpan>
-                  $ {stakedValue}
+                  {stakedValue}$
                 </StyledDetailSpan>
               </StyledDetail>
             </StyledDetails>
