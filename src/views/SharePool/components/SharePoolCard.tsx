@@ -44,7 +44,7 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
     const rewardValueYearly = new BigNumber(rewardRate).div(new BigNumber(10).pow(18)).times(tokenPriceOfEarn.toString()).times(365 * 24 * 3600)
 
     return rewardValueYearly.div(stakedValue).times(100)
-  }, [rewardRate])
+  }, [rewardRate, stakedValue, tokenPriceOfEarn])
 
   const renderer = (countdownProps: CountdownRenderProps) => {
     const { hours, minutes, seconds } = countdownProps
