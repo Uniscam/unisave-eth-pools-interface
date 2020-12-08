@@ -29,9 +29,10 @@ export function useY3dPrice() {
   }, [chainId, contract])
 
   useEffect(() => {
-    if (account && contract) {
-      fetchPrice()
-    }
+    // if (account && contract) {
+    //   fetchPrice()
+    // }
+    updatePriceInBUSD(utils.parseUnits('70.79', 6))
   }, [contract, account, fetchPrice])
 
   return { priceInUSD, fetchPrice }
