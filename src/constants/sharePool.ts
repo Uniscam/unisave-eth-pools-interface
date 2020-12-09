@@ -36,6 +36,15 @@ export const SharePools: Array<SharePoolObj> = [
                 isWBNB: false,
                 isLpToken: true,
                 icon: 'y3d',
+            },
+            {
+                1: '0x6643e0cb075f71261e2d14ac979234a63ed4db09',
+                name: 'USDC/USDX LP',
+                symbol: 'USDC/USDX LP',
+                tokenSymbol: 'USDC/USDX LP',
+                isWBNB: false,
+                isLpToken: true,
+                icon: 'y3d',
             }
         ],
         icon: 'y3d',
