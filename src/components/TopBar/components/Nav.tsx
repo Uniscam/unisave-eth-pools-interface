@@ -31,6 +31,9 @@ const Nav: React.FC = () => {
 const StyledNav = styled.nav`
   align-items: center;
   display: flex;
+  @media only screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `
 
 const StyledLink = styled(NavLink)`
