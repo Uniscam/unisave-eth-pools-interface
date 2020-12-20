@@ -57,7 +57,27 @@ export const SharePools: Array<SharePoolObj> = [
             }            
         ],
         icon: 'y3d',
-        name: 'StableLP Pool',
+        name: 'Stable Coin LP Pool',
+        p3d: 0,
+        magnification: 1,
+    },
+    {
+        poolAddresses: {
+            1: '0xe9110fc7d5fa45b09bc0b364d82b699f1177d016',
+        },
+        stakingTokenAddresses: [
+            {
+                1: '0x974af8c3d9e37673993265a244ca5ea86547a680',
+                name: 'WBTC/HBTC LP',
+                symbol: 'WBTC/HBTC LP',
+                tokenSymbol: 'WBTC/HBTC LP',
+                isWBNB: false,
+                isLpToken: true,
+                icon: 'y3d',
+            }         
+        ],
+        icon: 'y3d',
+        name: 'BTC LP Pool',
         p3d: 0,
         magnification: 1,
     }
