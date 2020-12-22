@@ -38,7 +38,11 @@ const SharePoolCard: React.FC<SharePoolCardProps> = ({ sharePool }) => {
   const [startTime, setStartTime] = useState(0)
   const [imagePath, setImagePath] = useState('')
 
-  const totalSupply = useTotalSupply(pid)
+  let totalSupply = useTotalSupply(pid)
+  if (pid === 1) {
+    totalSupply = totalSupply.times(2.2e10)
+  }
+
   const stakedValue = totalSupply.times(2).div(new BigNumber(10).pow(18+6)).toString()
   const rewardValue = useMemo(() => {
     const rewardValueYearly = new BigNumber(rewardRate).div(new BigNumber(10).pow(18+6)).times(tokenPriceOfEarn.toString()).times(365 * 24 * 3600 * 5)
