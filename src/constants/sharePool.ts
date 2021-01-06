@@ -74,7 +74,16 @@ export const SharePools: Array<SharePoolObj> = [
                 isWBNB: false,
                 isLpToken: true,
                 icon: 'y3d',
-            }         
+            }         ,
+            {
+                1: '0xd0f52b7e4ef306b1a0b7d5a3206dfd7f7e032e2e',
+                name: 'ETH/Y3D LP',
+                symbol: 'ETH/Y3D LP',
+                tokenSymbol: 'ETH/Y3D LP',
+                isWBNB: false,
+                isLpToken: true,
+                icon: 'y3d',
+            }               
         ],
         icon: 'y3d',
         name: 'BTC LP Pool',
