@@ -60,7 +60,7 @@ export const SharePools: Array<SharePoolObj> = [
         name: 'Stable Coin LP Pool',
         p3d: 0,
         magnification: 1,
-    },
+    },/*
     {
         poolAddresses: {
             1: '0xe5b677c7aae044135f81FEb4c38b877272e6F6dd',
@@ -89,5 +89,5 @@ export const SharePools: Array<SharePoolObj> = [
         name: 'BTC LP Pool',
         p3d: 0,
         magnification: 1,
-    }
+    }*/
 ]
